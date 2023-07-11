@@ -5,6 +5,8 @@ import java.util.Objects;
 public class PostObject {
     private String email;
     private String password;
+    private String expectedResult;
+    private String actualResult;
 
     public PostObject(String email, String password) {
         this.email = email;
