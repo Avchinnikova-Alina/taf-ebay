@@ -1,14 +1,16 @@
-package by.megatop.avchinnikova.alina;
+package pageAPI;
+
+import by.megatop.avchinnikova.alina.PostObject;
 
 import java.util.Objects;
 
-public class PostObject {
-    public String email;
-    public String password;
+public class ApiPage {
+    private String email;
+    private String password;
     private String expectedResult;
     private String actualResult;
 
-    public PostObject(String email, String password) {
+    public ApiPage(String email, String password) {
         this.email = email;
         this.password = password;
     }
@@ -25,7 +27,7 @@ public class PostObject {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        PostObject that = (PostObject) o;
+        ApiPage that = (ApiPage) o;
         return email == that.email && Objects.equals(password, that.password);
     }
 
@@ -34,3 +36,4 @@ public class PostObject {
         return Objects.hash(email, password);
     }
 }
+

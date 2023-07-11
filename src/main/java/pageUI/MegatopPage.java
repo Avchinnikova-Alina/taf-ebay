@@ -1,4 +1,4 @@
-package by.megatop.avchinnikova.alina.page;
+package pageUI;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -6,14 +6,14 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class MegatopPage {
     private ChromeDriver driver;
-    private String buttonProfileXpath = "//div[@class='v-responsive__content']";
-    private String inputEmailXpath = "//form[@class='v-form']//input[contains(@id, 'input-')]";
+    private String buttonProfileXpath = "//div[@class='v-responsive__content' and @style='width: 25px;']";
+    private String inputEmailXpath = "//form[@class='v-form']//input[contains(@id, 'input-') and @type='text']";
     private String inputPasswordXpath = "//form//input[contains(@id, 'input-') and @type='password']";
     private String errorTextWhenIncorrectEmailOrPasswordXpath = "//div[@class='v-messages__message' and text()='Вы ввели неверный номер телефона и/или пароль']";
     private String errorTextWhenEmptyEmailXpath = "//div[@class='v-messages__message' and text()='Телефон обязательное поле']";
     private String errorTextWhenIncorrectEmailXpath = "//div[@class='v-messages__message' and text()='Введите корректно номер телефона']";
     private String errorTextWhenIncompletelyEmailXpath = "//div[@class='v-messages__message' and text()='Введите телефон полностью']";
-    private String buttonSignInXpath = "//*[@id=\"app\"]/div/div[7]/div/div/div[2]/form/div[3]/div[2]/button";
+    private String buttonSignInXpath = "//button[@type='submit']";
     private String buttonYesXpath = "//*[@id=\"app\"]/div[3]/div/div/div/div/div/div/div[2]/button[1]";
 
     public MegatopPage(ChromeDriver driver) {

@@ -1,33 +1,9 @@
 package by.megatop.avchinnikova.alina.TestUi;
 
-import com.github.javafaker.Faker;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import by.megatop.avchinnikova.alina.page.MegatopPage;
 
-import java.util.concurrent.TimeUnit;
-
-public class MegatopTest {
-    ChromeDriver driver;
-    MegatopPage megatopPage;
-    Faker faker;
-    @BeforeEach
-    public void warmUp() {
-        ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("--remote-allow-origins=*");
-        driver = new ChromeDriver(chromeOptions);
-        driver.manage().window().maximize();
-        driver.get("https://megatop.by/");
-        megatopPage = new MegatopPage(driver);
-        faker = new Faker();
-        megatopPage.getAllert();
-        megatopPage.clickButtonProfile();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-    }
+public class UITest extends BaseTest {
     @Test
     public void emptyEmailAndEmptyPassword() {
         megatopPage.clickButtonSignIn();
@@ -61,9 +37,5 @@ public class MegatopTest {
                 sendKeysInputPassword("Qwerty1Q").
                 clickButtonSignIn();
         Assertions.assertEquals("Введите телефон полностью", megatopPage.getErrorWhenIncompletelyEmail());
-    }
-    @AfterEach
-    public void tearsDown() {
-        driver.quit();
     }
 }
