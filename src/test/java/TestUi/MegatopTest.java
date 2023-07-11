@@ -60,7 +60,7 @@ public class MegatopTest {
                 sendKeysInputEmail("1178588").
                 sendKeysInputPassword("Qwerty1Q").
                 clickButtonSignIn();
-        Assertions.assertEquals("Введите телефон полностью", megatopPage.getErrorWhenIncorrectEmail());
+        Assertions.assertEquals("Введите телефон полностью", megatopPage.getErrorWhenIncompletelyEmail());
     }
     @AfterEach
     public void tearsDown() {
