@@ -12,8 +12,8 @@ public class MegatopStep {
 
     public void fillLoginFormAndSubmit(String email, String password) {
         page.getAllert();
-        page.clickContinueWithEmail();
         page.clickButtonProfile();
+        page.switchToIframe();
         page.sendKeysInputEmail(email);
         page.sendKeysInputPassword(password);
         page.clickButtonSignIn();
