@@ -35,14 +35,12 @@ public class MegatopTest {
     }
     @Test
     public void emptyEmailAndCorrectPassword() {
-        megatopPage.switchToIframe();
         megatopPage.sendKeysInputPassword("Qwerty1Q").
                 clickButtonSignIn();
         Assertions.assertEquals("Телефон обязательное поле", megatopPage.getErrorWhenEmptyEmail());
     }
     @Test
     public void correctEmailAndEmptyPassword() {
-        megatopPage.switchToIframe();
         megatopPage.
                 sendKeysInputEmail("447858875").
                 clickButtonSignIn();
@@ -50,7 +48,6 @@ public class MegatopTest {
     }
     @Test
     public void IncorrectEmailAndCorrectPassword() {
-        megatopPage.switchToIframe();
         megatopPage.
                 sendKeysInputEmail("117858875").
                 sendKeysInputPassword("Qwerty1Q").
@@ -59,7 +56,6 @@ public class MegatopTest {
     }
     @Test
     public void IncompletelyEnteredDataEmailAndCorrectPassword() {
-        megatopPage.switchToIframe();
         megatopPage.
                 sendKeysInputEmail("1178588").
                 sendKeysInputPassword("Qwerty1Q").
