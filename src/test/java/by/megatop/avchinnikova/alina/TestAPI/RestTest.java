@@ -1,5 +1,6 @@
-package by.megatop.avchinnikova.alina;
+package by.megatop.avchinnikova.alina.TestAPI;
 
+import by.megatop.avchinnikova.alina.PostObject;
 import io.restassured.response.ValidatableResponse;
 import org.testng.Assert;
 import org.testng.annotations.Ignore;
