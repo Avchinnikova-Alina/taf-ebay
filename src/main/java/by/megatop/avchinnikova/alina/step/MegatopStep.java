@@ -1,7 +1,7 @@
-package step;
+package by.megatop.avchinnikova.alina.step;
 
 import org.openqa.selenium.chrome.ChromeDriver;
-import page.MegatopPage;
+import by.megatop.avchinnikova.alina.page.MegatopPage;
 
 public class MegatopStep {
     MegatopPage page;
@@ -13,6 +13,7 @@ public class MegatopStep {
     public void fillLoginFormAndSubmit(String email, String password) {
         page.getAllert();
         page.clickButtonProfile();
+        //page.switchToIframe();
         page.sendKeysInputEmail(email);
         page.sendKeysInputPassword(password);
         page.clickButtonSignIn();
