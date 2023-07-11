@@ -8,7 +8,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class MegatopPage {
     private ChromeDriver driver;
     private String buttonProfileXpath = "//div[@class=\"v-responsive__content\" and @style=\"width: 25px;\"]";
-    private String iFrameXpath = "/html/body/noscript[1]/text()";
     private String inputEmailXpath = "//form[@class=\"v-form\"]//input[contains(@id, \"input-\") and @type=\"text\"]";
     private String inputPasswordXpath = "//form//input[contains(@id, \"input-\") and @type=\"password\"]";
     private String errorTextWhenIncorrectEmailOrPasswordXpath = "//div[@class=\"v-messages__message\" and text()=\"Вы ввели неверный номер телефона и/или пароль\"]";
@@ -27,10 +26,6 @@ public class MegatopPage {
         return this;
     }
 
-    public void switchToIframe() {
-        WebElement iFrame = driver.findElement(By.xpath(iFrameXpath));
-        driver.switchTo().frame(iFrame);
-    }
     public MegatopPage sendKeysInputEmail(String email) {
         WebElement inputEmail = driver.findElement(By.xpath(inputEmailXpath));
         inputEmail.sendKeys(email);
