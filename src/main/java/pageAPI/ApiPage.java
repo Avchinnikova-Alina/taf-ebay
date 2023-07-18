@@ -1,14 +1,11 @@
 package pageAPI;
 
-import by.megatop.avchinnikova.alina.PostObject;
-
+import java.util.HashMap;
 import java.util.Objects;
 
 public class ApiPage {
     private String email;
     private String password;
-    private String expectedResult;
-    private String actualResult;
 
     public ApiPage(String email, String password) {
         this.email = email;
@@ -35,5 +32,6 @@ public class ApiPage {
     public int hashCode() {
         return Objects.hash(email, password);
     }
+
 }
 

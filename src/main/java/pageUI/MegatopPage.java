@@ -6,69 +6,69 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class MegatopPage {
     private ChromeDriver driver;
-    private String buttonProfileXpath = "//div[@class='v-responsive__content' and @style='width: 25px;']";
-    private String inputEmailXpath = "//form[@class='v-form']//input[contains(@id, 'input-') and @type='text']";
-    private String inputPasswordXpath = "//form//input[contains(@id, 'input-') and @type='password']";
-    private String errorTextWhenIncorrectEmailOrPasswordXpath = "//div[@class='v-messages__message' and text()='Вы ввели неверный номер телефона и/или пароль']";
-    private String errorTextWhenEmptyEmailXpath = "//div[@class='v-messages__message' and text()='Телефон обязательное поле']";
-    private String errorTextWhenIncorrectEmailXpath = "//div[@class='v-messages__message' and text()='Введите корректно номер телефона']";
-    private String errorTextWhenIncompletelyEmailXpath = "//div[@class='v-messages__message' and text()='Введите телефон полностью']";
-    private String buttonSignInXpath = "//button[@type='submit']";
-    private String buttonYesXpath = "//*[@id=\"app\"]/div[3]/div/div/div/div/div/div/div[2]/button[1]";
+    private String buttonProfileLocator = "//div[@class='v-responsive__content' and @style='width: 25px;']";
+    private String inputEmailLocator = "//form[@class='v-form']//input[contains(@id, 'input-') and @type='text']";
+    private String inputPasswordLocator = "//form//input[contains(@id, 'input-') and @type='password']";
+    private String errorTextWhenIncorrectEmailOrPasswordLocator = "//div[@class='v-messages__message' and text()='Вы ввели неверный номер телефона и/или пароль']";
+    private String errorTextWhenEmptyEmailLocator = "//div[@class='v-messages__message' and text()='Телефон обязательное поле']";
+    private String errorTextWhenIncorrectEmailLocator = "//div[@class='v-messages__message' and text()='Введите корректно номер телефона']";
+    private String errorTextWhenIncompletelyEmailLocator = "//div[@class='v-messages__message' and text()='Введите телефон полностью']";
+    private String buttonSignInLocator = "//button[@type='submit']";
+    private String buttonYesLocator = "//*[@id='app']/div[3]/div/div/div/div/div/div/div[2]/button[1]";
 
     public MegatopPage(ChromeDriver driver) {
         this.driver = driver;
     }
 
     public MegatopPage clickButtonProfile() {
-        WebElement buttonSignIn = driver.findElement(By.xpath(buttonProfileXpath));
+        WebElement buttonSignIn = driver.findElement(By.xpath(buttonProfileLocator));
         buttonSignIn.click();
         return this;
     }
 
     public MegatopPage sendKeysInputEmail(String email) {
-        WebElement inputEmail = driver.findElement(By.xpath(inputEmailXpath));
+        WebElement inputEmail = driver.findElement(By.xpath(inputEmailLocator));
         inputEmail.sendKeys(email);
         return this;
     }
 
     public MegatopPage sendKeysInputPassword(String password) {
-        WebElement inputPassword = driver.findElement(By.xpath(inputPasswordXpath));
+        WebElement inputPassword = driver.findElement(By.xpath(inputPasswordLocator));
         inputPassword.sendKeys(password);
         return this;
     }
 
     public MegatopPage clickButtonSignIn() {
-        WebElement buttonSignIn = driver.findElement(By.xpath(buttonSignInXpath));
+        WebElement buttonSignIn = driver.findElement(By.xpath(buttonSignInLocator));
         buttonSignIn.click();
         return this;
     }
 
     public String getErrorWhenIncorrectEmailOrPassword() {
-        WebElement actError = driver.findElement(By.xpath(errorTextWhenIncorrectEmailOrPasswordXpath));
+        WebElement actError = driver.findElement(By.xpath(errorTextWhenIncorrectEmailOrPasswordLocator));
         String actErrorMessage = actError.getText();
         return actErrorMessage;
     }
 
     public String getErrorWhenEmptyEmail() {
-        WebElement actError = driver.findElement(By.xpath(errorTextWhenEmptyEmailXpath));
+        WebElement actError = driver.findElement(By.xpath(errorTextWhenEmptyEmailLocator));
         String actErrorMessage = actError.getText();
         return actErrorMessage;
     }
 
     public String getErrorWhenIncorrectEmail() {
-        WebElement actError = driver.findElement(By.xpath(errorTextWhenIncorrectEmailXpath));
+        WebElement actError = driver.findElement(By.xpath(errorTextWhenIncorrectEmailLocator));
         String actErrorMessage = actError.getText();
         return actErrorMessage;
     }
     public String getErrorWhenIncompletelyEmail() {
-        WebElement actError = driver.findElement(By.xpath(errorTextWhenIncompletelyEmailXpath));
+        WebElement actError = driver.findElement(By.xpath(errorTextWhenIncompletelyEmailLocator));
         String actErrorMessage = actError.getText();
         return actErrorMessage;
     }
 
     public MegatopPage getAllert() {
-        WebElement buttonYes = driver.findElement(By.xpath(buttonYesXpath));
+        WebElement buttonYes = driver.findElement(By.xpath(buttonYesLocator));
         buttonYes.click();
         return this;
     }
