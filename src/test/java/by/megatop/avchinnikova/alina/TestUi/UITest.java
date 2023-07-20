@@ -3,6 +3,8 @@ package by.megatop.avchinnikova.alina.TestUi;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.concurrent.TimeUnit;
+
 public class UITest extends BaseTest {
     @Test
     public void emptyEmailAndEmptyPassword() {
@@ -13,7 +15,7 @@ public class UITest extends BaseTest {
 
     @Test
     public void emptyEmailAndCorrectPassword() {
-        megatopPage.sendKeysInputPassword(faker.internet().password()).
+        megatopPage.sendKeysInputPassword(megatopPassword.toString()).
                 clickButtonSignIn();
         Assertions.assertEquals("Телефон обязательное поле",
                 megatopPage.getErrorWhenEmptyEmail());
@@ -22,7 +24,7 @@ public class UITest extends BaseTest {
     @Test
     public void correctEmailAndEmptyPassword() {
         megatopPage.
-                sendKeysInputEmail(megatopPage.generatePhoneNumber()).
+                sendKeysInputEmail(phoneNumber.generatePhoneNumber()).
                 clickButtonSignIn();
         Assertions.assertEquals("Вы ввели неверный номер телефона и/или пароль",
                 megatopPage.getErrorWhenIncorrectEmailOrPassword());
@@ -32,7 +34,7 @@ public class UITest extends BaseTest {
     public void IncorrectEmailAndCorrectPassword() {
         megatopPage.
                 sendKeysInputEmail(faker.phoneNumber().cellPhone()).
-                sendKeysInputPassword(faker.internet().password()).
+                sendKeysInputPassword(megatopPassword.toString()).
                 clickButtonSignIn();
         Assertions.assertEquals("Введите корректно номер телефона",
                 megatopPage.getErrorWhenIncorrectEmail());
@@ -41,8 +43,8 @@ public class UITest extends BaseTest {
     @Test
     public void IncompletelyEnteredDataEmailAndCorrectPassword() {
         megatopPage.
-                sendKeysInputPassword(faker.internet().password()).
-                sendKeysInputEmail(megatopPage.generatePhoneNumber()).
+                sendKeysInputPassword(megatopPassword.toString()).
+                sendKeysInputEmail(phoneNumber.generatePhoneNumber()).
                 clickButtonSignIn();
         Assertions.assertEquals("Введите телефон полностью",
                 megatopPage.getErrorWhenIncompletelyEmail());
@@ -51,7 +53,7 @@ public class UITest extends BaseTest {
     @Test
     public void CorrectEmailAndIncorrectPassword() {
         megatopPage.
-                sendKeysInputEmail(megatopPage.generatePhoneNumber()).
+                sendKeysInputEmail(phoneNumber.generatePhoneNumber()).
                 sendKeysInputPassword(faker.internet().password()).
                 clickButtonSignIn();
         Assertions.assertEquals("Вы ввели неверный номер телефона и/или пароль",
@@ -62,8 +64,9 @@ public class UITest extends BaseTest {
     public void CorrectEmailAndCorrectPassword() {
         megatopPage.
                 sendKeysInputEmail(megatopPage.generatePhoneNumber()).
-                sendKeysInputPassword(megatopPage.generatePassword()).
+                sendKeysInputPassword(megatopPassword.toString()).
                 clickButtonSignIn();
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         Assertions.assertEquals("ПРИВЕТ, АЛИНА", megatopPage.getTextSuccessfulLogin());
     }
 }
