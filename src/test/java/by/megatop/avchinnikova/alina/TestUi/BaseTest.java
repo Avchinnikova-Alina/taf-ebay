@@ -8,7 +8,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import pageUI.MegatopPage;
 import Util.GeneratePassword;
-
 import java.util.concurrent.TimeUnit;
 
 public class BaseTest {

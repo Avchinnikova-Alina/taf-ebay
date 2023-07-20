@@ -2,7 +2,6 @@ package by.megatop.avchinnikova.alina.TestUi;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
 import java.util.concurrent.TimeUnit;
 
 public class UITest extends BaseTest {
@@ -63,7 +62,7 @@ public class UITest extends BaseTest {
     @Test
     public void CorrectEmailAndCorrectPassword() {
         megatopPage.
-                sendKeysInputEmail(megatopPage.generatePhoneNumber()).
+                sendKeysInputEmail(phoneNumber.generatePhoneNumber()).
                 sendKeysInputPassword(megatopPassword.toString()).
                 clickButtonSignIn();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
