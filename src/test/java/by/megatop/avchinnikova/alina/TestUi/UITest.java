@@ -7,35 +7,63 @@ public class UITest extends BaseTest {
     @Test
     public void emptyEmailAndEmptyPassword() {
         megatopPage.clickButtonSignIn();
-        Assertions.assertEquals("Телефон обязательное поле", megatopPage.getErrorWhenEmptyEmail());
+        Assertions.assertEquals("Телефон обязательное поле",
+                megatopPage.getErrorWhenEmptyEmail());
     }
+
     @Test
     public void emptyEmailAndCorrectPassword() {
-        megatopPage.sendKeysInputPassword("Qwerty1Q").
+        megatopPage.sendKeysInputPassword(faker.internet().password()).
                 clickButtonSignIn();
-        Assertions.assertEquals("Телефон обязательное поле", megatopPage.getErrorWhenEmptyEmail());
+        Assertions.assertEquals("Телефон обязательное поле",
+                megatopPage.getErrorWhenEmptyEmail());
     }
+
     @Test
     public void correctEmailAndEmptyPassword() {
         megatopPage.
-                sendKeysInputEmail("447858875").
+                sendKeysInputEmail(megatopPage.generatePhoneNumber()).
                 clickButtonSignIn();
-        Assertions.assertEquals("Вы ввели неверный номер телефона и/или пароль", megatopPage.getErrorWhenIncorrectEmailOrPassword());
+        Assertions.assertEquals("Вы ввели неверный номер телефона и/или пароль",
+                megatopPage.getErrorWhenIncorrectEmailOrPassword());
     }
+
     @Test
     public void IncorrectEmailAndCorrectPassword() {
         megatopPage.
-                sendKeysInputEmail("117858875").
-                sendKeysInputPassword("Qwerty1Q").
+                sendKeysInputEmail(faker.phoneNumber().cellPhone()).
+                sendKeysInputPassword(faker.internet().password()).
                 clickButtonSignIn();
-        Assertions.assertEquals("Введите корректно номер телефона", megatopPage.getErrorWhenIncorrectEmail());
+        Assertions.assertEquals("Введите корректно номер телефона",
+                megatopPage.getErrorWhenIncorrectEmail());
     }
+
     @Test
     public void IncompletelyEnteredDataEmailAndCorrectPassword() {
         megatopPage.
-                sendKeysInputEmail("1178588").
-                sendKeysInputPassword("Qwerty1Q").
+                sendKeysInputPassword(faker.internet().password()).
+                sendKeysInputEmail(megatopPage.generatePhoneNumber()).
                 clickButtonSignIn();
-        Assertions.assertEquals("Введите телефон полностью", megatopPage.getErrorWhenIncompletelyEmail());
+        Assertions.assertEquals("Введите телефон полностью",
+                megatopPage.getErrorWhenIncompletelyEmail());
+    }
+
+    @Test
+    public void CorrectEmailAndIncorrectPassword() {
+        megatopPage.
+                sendKeysInputEmail(megatopPage.generatePhoneNumber()).
+                sendKeysInputPassword(faker.internet().password()).
+                clickButtonSignIn();
+        Assertions.assertEquals("Вы ввели неверный номер телефона и/или пароль",
+                megatopPage.getErrorWhenIncorrectEmailOrPassword());
+    }
+
+    @Test
+    public void CorrectEmailAndCorrectPassword() {
+        megatopPage.
+                sendKeysInputEmail(megatopPage.generatePhoneNumber()).
+                sendKeysInputPassword(megatopPage.generatePassword()).
+                clickButtonSignIn();
+        Assertions.assertEquals("ПРИВЕТ, АЛИНА", megatopPage.getTextSuccessfulLogin());
     }
 }

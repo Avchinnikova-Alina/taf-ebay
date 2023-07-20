@@ -32,6 +32,5 @@ public class ApiPage {
     public int hashCode() {
         return Objects.hash(email, password);
     }
-
 }
 

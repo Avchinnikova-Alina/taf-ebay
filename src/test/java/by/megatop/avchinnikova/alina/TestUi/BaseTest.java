@@ -24,7 +24,7 @@ public class BaseTest {
         driver.get("https://megatop.by/");
         megatopPage = new MegatopPage(driver);
         faker = new Faker();
-        megatopPage.getAllert();
+        megatopPage.clickButtonYes();
         megatopPage.clickButtonProfile();
     }
     @AfterEach
