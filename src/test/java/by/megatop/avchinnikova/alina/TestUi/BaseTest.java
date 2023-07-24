@@ -1,5 +1,6 @@
 package by.megatop.avchinnikova.alina.TestUi;
 
+import Util.GenerateNameSearch;
 import Util.GeneratePhoneNumber;
 import com.github.javafaker.Faker;
 import org.junit.jupiter.api.AfterEach;
@@ -15,6 +16,7 @@ public class BaseTest {
     MegatopPage megatopPage;
     GeneratePassword megatopPassword;
     GeneratePhoneNumber phoneNumber;
+    GenerateNameSearch nameSearch;
     Faker faker;
     @BeforeEach
     public void warmUp() {
@@ -28,9 +30,9 @@ public class BaseTest {
         megatopPage = new MegatopPage(driver);
         megatopPassword = new GeneratePassword("qwerty1Q");
         phoneNumber =  new GeneratePhoneNumber(driver);
+        nameSearch = new GenerateNameSearch("Кроссовки");
         faker = new Faker();
         megatopPage.clickButtonYes();
-        megatopPage.clickButtonProfile();
     }
     @AfterEach
     public void tearsDown() {

@@ -2,19 +2,22 @@ package by.megatop.avchinnikova.alina.TestUi;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
 import java.util.concurrent.TimeUnit;
 
 public class UITest extends BaseTest {
     @Test
     public void emptyEmailAndEmptyPassword() {
-        megatopPage.clickButtonSignIn();
+        megatopPage.clickButtonProfile().
+                clickButtonSignIn();
         Assertions.assertEquals("Телефон обязательное поле",
                 megatopPage.getErrorWhenEmptyEmail());
     }
 
     @Test
     public void emptyEmailAndCorrectPassword() {
-        megatopPage.sendKeysInputPassword(megatopPassword.toString()).
+        megatopPage.clickButtonProfile().
+                sendKeysInputPassword(megatopPassword.toString()).
                 clickButtonSignIn();
         Assertions.assertEquals("Телефон обязательное поле",
                 megatopPage.getErrorWhenEmptyEmail());
@@ -23,6 +26,7 @@ public class UITest extends BaseTest {
     @Test
     public void correctEmailAndEmptyPassword() {
         megatopPage.
+                clickButtonProfile().
                 sendKeysInputEmail(phoneNumber.generatePhoneNumber()).
                 clickButtonSignIn();
         Assertions.assertEquals("Вы ввели неверный номер телефона и/или пароль",
@@ -32,6 +36,7 @@ public class UITest extends BaseTest {
     @Test
     public void IncorrectEmailAndCorrectPassword() {
         megatopPage.
+                clickButtonProfile().
                 sendKeysInputEmail(faker.phoneNumber().cellPhone()).
                 sendKeysInputPassword(megatopPassword.toString()).
                 clickButtonSignIn();
@@ -42,6 +47,7 @@ public class UITest extends BaseTest {
     @Test
     public void IncompletelyEnteredDataEmailAndCorrectPassword() {
         megatopPage.
+                clickButtonProfile().
                 sendKeysInputPassword(megatopPassword.toString()).
                 sendKeysInputEmail(phoneNumber.generatePhoneNumber()).
                 clickButtonSignIn();
@@ -52,6 +58,7 @@ public class UITest extends BaseTest {
     @Test
     public void CorrectEmailAndIncorrectPassword() {
         megatopPage.
+                clickButtonProfile().
                 sendKeysInputEmail(phoneNumber.generatePhoneNumber()).
                 sendKeysInputPassword(faker.internet().password()).
                 clickButtonSignIn();
@@ -62,10 +69,19 @@ public class UITest extends BaseTest {
     @Test
     public void CorrectEmailAndCorrectPassword() {
         megatopPage.
+                clickButtonProfile().
                 sendKeysInputEmail(phoneNumber.generatePhoneNumber()).
                 sendKeysInputPassword(megatopPassword.toString()).
                 clickButtonSignIn();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         Assertions.assertEquals("ПРИВЕТ, АЛИНА", megatopPage.getTextSuccessfulLogin());
+    }
+
+    @Test
+    public void SearchShoes() {
+        megatopPage.clickButtonSearch();
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        megatopPage.clickInputSearch().sendKeysInputSearch(nameSearch.toString());
+        Assertions.assertEquals("ПОИСК ПО ЗАПРОСУ 'КРОССОВКИ'", megatopPage.getTextSuccessfulSearch());
     }
 }
