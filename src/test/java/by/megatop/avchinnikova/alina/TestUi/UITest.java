@@ -2,6 +2,7 @@ package by.megatop.avchinnikova.alina.TestUi;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.Keys;
 
 import java.util.concurrent.TimeUnit;
 
@@ -81,7 +82,7 @@ public class UITest extends BaseTest {
     public void SearchShoes() {
         megatopPage.clickButtonSearch();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        megatopPage.clickInputSearch().sendKeysInputSearch(nameSearch.toString());
+        megatopPage.sendKeysInputSearch(nameSearch.toString()).clickInputSearch(Keys.ENTER);
         Assertions.assertEquals("ПОИСК ПО ЗАПРОСУ 'КРОССОВКИ'", megatopPage.getTextSuccessfulSearch());
     }
 }

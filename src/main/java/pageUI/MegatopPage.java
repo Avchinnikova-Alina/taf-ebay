@@ -1,6 +1,7 @@
 package pageUI;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -90,7 +91,7 @@ public class MegatopPage {
         return this;
     }
 
-    public MegatopPage clickInputSearch() {
+    public MegatopPage clickInputSearch(Keys enter) {
         WebElement inputSearch = driver.findElement(By.xpath(inputSearchLocator));
         inputSearch.click();
         return this;

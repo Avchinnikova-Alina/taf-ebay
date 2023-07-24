@@ -84,7 +84,7 @@ public class LoginApi {
 
     @Test
     public void testPostFromWithCorrectField() {
-        ApiPage apiPage = new ApiPage("447858875", "qwertyui1Q");
+        ApiPage apiPage = new ApiPage("447858875", "qwerty1Q");
         ValidatableResponse response = given().header("Content-Type", "application/json").body(apiPage).
                 when().post("https://admin.megatop.by/api/v1/user/login").then().log().all();
         Assert.assertEquals(response.extract().statusCode(), 200);
