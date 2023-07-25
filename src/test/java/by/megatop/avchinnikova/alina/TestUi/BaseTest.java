@@ -5,6 +5,7 @@ import Util.GeneratePhoneNumber;
 import com.github.javafaker.Faker;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import pageUI.MegatopPage;
@@ -30,7 +31,7 @@ public class BaseTest {
         megatopPage = new MegatopPage(driver);
         megatopPassword = new GeneratePassword("qwerty1Q");
         phoneNumber =  new GeneratePhoneNumber(driver);
-        nameSearch = new GenerateNameSearch("Кроссовки");
+        nameSearch = new GenerateNameSearch("Кроссовки" + Keys.ENTER);
         faker = new Faker();
         megatopPage.clickButtonYes();
     }

@@ -80,9 +80,9 @@ public class UITest extends BaseTest {
 
     @Test
     public void SearchShoes() {
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         megatopPage.clickButtonSearch();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        megatopPage.sendKeysInputSearch(nameSearch.toString()).clickInputSearch(Keys.ENTER);
+        megatopPage.sendKeysInputSearch(nameSearch.toString());
         Assertions.assertEquals("ПОИСК ПО ЗАПРОСУ 'КРОССОВКИ'", megatopPage.getTextSuccessfulSearch());
     }
 }
