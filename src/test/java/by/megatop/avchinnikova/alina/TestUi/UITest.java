@@ -79,7 +79,7 @@ public class UITest extends BaseTest {
     }
 
     @Test
-    public void SearchShoes() {
+    public void SearchShoes() throws InterruptedException {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         megatopPage.clickButtonSearch();
         megatopPage.sendKeysInputSearch(nameSearch.toString());

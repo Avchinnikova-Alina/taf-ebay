@@ -1,5 +1,6 @@
 package pageUI;
 
+import Util.Waiters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -18,7 +19,7 @@ public class MegatopPage {
     private String buttonYesLocator = "//*[@id='app']/div[3]/div/div/div/div/div/div/div[2]/button[1]";
     private String getTextSuccessfulLoginLocator = "//div[@class='text-uppercase profile__title col col-12' and contains(text(), 'привет, Алина')]";
     private String buttonSearchLocator = "//div[@class='v-responsive__content' and @style='width: 24px;']";
-    private String inputSearchLocator = "//div[@class='d-flex justify-space-between mt-1 px-0 search__input-wrap col col-4']/div/div/div/div/input";
+    private String inputSearchLocator = "//div[@class='v-text-field__slot']/input";
     private String getTextSuccessfulSearch = "//h1[@class='catalog__title text-uppercase' and @data-v-8b85e2f2='']";
 
     public MegatopPage(ChromeDriver driver) {
@@ -91,19 +92,16 @@ public class MegatopPage {
         return this;
     }
 
-    public MegatopPage clickInputSearch(Keys enter) {
-        WebElement inputSearch = driver.findElement(By.xpath(inputSearchLocator));
-        inputSearch.click();
-        return this;
-    }
-
     public MegatopPage sendKeysInputSearch(String string) {
+        Waiters.waitForSeconds(1);
         WebElement inputSearch = driver.findElement(By.xpath(inputSearchLocator));
         inputSearch.click();
+        inputSearch.sendKeys(string + Keys.ENTER);
         return this;
     }
 
     public String getTextSuccessfulSearch() {
+        Waiters.waitForSeconds(1);
         WebElement getText = driver.findElement(By.xpath(getTextSuccessfulSearch));
         String textSuccessfulSearch = getText.getText();
         return textSuccessfulSearch;

@@ -2,6 +2,7 @@ package by.megatop.avchinnikova.alina.TestUi;
 
 import Util.GenerateNameSearch;
 import Util.GeneratePhoneNumber;
+import Util.Waiters;
 import com.github.javafaker.Faker;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -18,6 +19,7 @@ public class BaseTest {
     GeneratePassword megatopPassword;
     GeneratePhoneNumber phoneNumber;
     GenerateNameSearch nameSearch;
+    Waiters wait;
     Faker faker;
     @BeforeEach
     public void warmUp() {
@@ -31,7 +33,8 @@ public class BaseTest {
         megatopPage = new MegatopPage(driver);
         megatopPassword = new GeneratePassword("qwerty1Q");
         phoneNumber =  new GeneratePhoneNumber(driver);
-        nameSearch = new GenerateNameSearch("Кроссовки" + Keys.ENTER);
+        wait = new Waiters();
+        nameSearch = new GenerateNameSearch("Кроссовки");
         faker = new Faker();
         megatopPage.clickButtonYes();
     }
