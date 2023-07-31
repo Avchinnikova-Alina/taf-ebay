@@ -2,7 +2,6 @@ package by.megatop.avchinnikova.alina.TestUi;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.Keys;
 
 import java.util.concurrent.TimeUnit;
 
@@ -79,7 +78,7 @@ public class UITest extends BaseTest {
     }
 
     @Test
-    public void SearchShoes() throws InterruptedException {
+    public void SearchShoes() {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         megatopPage.clickButtonSearch();
         megatopPage.sendKeysInputSearch(nameSearch.toString());
